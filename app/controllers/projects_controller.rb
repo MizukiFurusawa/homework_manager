@@ -50,7 +50,7 @@ class ProjectsController < ApplicationController
 	def project_params
 
 		#cation!!
-		params[:project].permit(:title,:Professor_name,:Lecture_date,:Days,:Times)
+		params[:project].permit(:title,:Professor_name,:Days,:Times)
 	end
 
 end

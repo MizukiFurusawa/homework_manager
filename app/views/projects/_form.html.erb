@@ -8,7 +8,7 @@
 		<%= @project.errors.messages[:title][0] %>
 	<% end %>
   </div>
-
+<br>
   <div class="field">
     <%= f.label :Professor_name, "Professor" %><br>
     <%= f.text_field :Professor_name %>
@@ -16,29 +16,26 @@
 		<%= @project.errors.messages[:Professor_name][0] %>
 	<% end %>
   </div>
-
+<br>
   <div class="field">
-    <%= f.label :Lecture_date, "Lecture_date" %><br>
-    <%= f.text_field :Lecture_date %>
-	<% if @project.errors.any? %>
-		<%= @project.errors.messages[:Lecture_date][0] %>
-	<% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :Days, "Day" %><br><%= f.text_field :Days %>
+    <%= f.label :Days, "Day" %><br>
+	<%= f.select :Days, {'月曜日' => '月' , '火曜日' => '火', '水曜日' => '水', '木曜日' => '木', '金曜日' => '金', '土曜日' => '土', '日曜日' => '日'} %><br />
 	<% if @project.errors.any? %>
 		<%= @project.errors.messages[:Days][0] %>
 	<% end %>
   </div>
-  
+  <br>
   <div class="field">
-    <%= f.label :Times, "Time" %><br><%= f.text_field :Times %>
+    <%= f.label :Times, "Time" %><br>
+	<%= f.select :Times, {'1限目' => 1 , '2限目' => 2, '3限目' => 3, '4限目' => 4, '5限目' => 5, '6限目' => 6, '7限目' => 7} %><br />
 	<% if @project.errors.any? %>
 		<%= @project.errors.messages[:Times][0] %>
 	<% end %>
   </div>
-  
+
+  <br>
+  <br>
+
   <div class="actions">
     <%= f.submit "登録する" %>
   </div>

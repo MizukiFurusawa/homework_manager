@@ -16,8 +16,8 @@
 
 
 .form{
-	width : 280px;
-	margin-left: auto
+	width : 300px;
+	margin-right: auto
 }
 
 .timetable_list{
@@ -71,7 +71,9 @@
 section{
 	height		:	auto;
   	margin 		:	50px 100px;
-	
+  	text-align : center;
+
+
 }
 
 
@@ -114,7 +116,7 @@ p#username{
 
 
 .page_title{
-    text-align	: 	left;
+    text-align	: 	center;
 	color		:	white;
 	font-size	: 	30px;
 	text-shadow	:	1px 1px 2px black;
@@ -122,7 +124,7 @@ p#username{
 
 
 .page_sub_title{
-    text-align	: 	left;
+    text-align	: 	center;
 	color		:	white;
 	font-size	: 	20px;
 	text-shadow	:	1px 1px 2px black;
@@ -212,4 +214,9 @@ p#username{
 	background-color: #fff;
 	border-bottom: 1px solid #999;
 	border-left: 1px solid #999;
+}
+
+
+table.sample_02 tr:hover {
+background-color: #FFCC99; /* マウスオーバー時の行の背景色 */
 }

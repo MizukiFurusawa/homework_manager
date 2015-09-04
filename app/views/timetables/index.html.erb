@@ -1,38 +1,58 @@
-<h1>TIMELINE</h1>
+
 <% if user_signed_in? %>
+<div class ="page_title">TIMETABLE</div>
+<br>
+<% days = ["月","火","水","木","金","土","日"] %>
+
+
 <table class="sample_02">
 <tbody>
 
 <tr>
-<th>Option</th>
-<th>Issues</th>
-<th>Processed</th>
-<th>Subject</th>
-<th>Professor</th>
-<th>Lecture Date</th>
+<th></th>
+<th>月</th>
+<th>火</th>
+<th>水</th>
+<th>木</th>
+<th>金</th>
+<th>土</th>
+<th>日</th>
 </tr>
 
-	<% @projects.each do |project| %>
+
+<% for time_index in 1..7 do %>
 	<tr>
-	<td width="10%"><%= link_to "[delete] ",project_path(project.id),method: :delete,data: {confirm: "削除しますか？"} %></td>
-	<td width="10%">(<%= project.tasks.unfinished.count %>/<%= project.tasks.count %>)</td>
-	<td width="10%">127</td>
-	<td width="40%"><%= link_to "[edit]",edit_project_path(project.id) %>          <%= link_to project.title,project_path(project.id) %></td>
-	<td width="10%"><%= project.Professor_name %></td>
-	<td width="20%"><%= project.Days %>曜<%= project.Times %>限目</td>
-	</tr>
+	<td 　width="16%"><%= time_index %>限</td>
+	
+	<% for days_index in 0..6 do %>
+		<td 　width="12%">
+
+
+			<% @projects.each do |project| %>
+
+				<% if time_index.to_s == project.Times && days[days_index] == project.Days then %>
+				<%= link_to project.title,project_path(project.id) %>
+				<% end %>
+
+			<% end %>
+
+		</td>
 	<% end %>
 
-
-	<tr>
-	<td width="10%"><%= link_to "[Add]" ,new_project_path %></td>
-	<td width="10%">-</td>
-	<td width="10%">-</td>
-	<td width="40%">-</td>
-	<td width="10%">-</td>
-	<td width="20%">-</td>
 	</tr>
+<% end %>
 
+
+<tr>
+<td 　width="16%"><%= link_to "[Add]" ,new_project_path %></td>
+<td 　width="12%">-</td>
+<td 　width="12%">-</td>
+<td 　width="12%">-</td>
+<td 　width="12%">-</td>
+<td 　width="12%">-</td>
+<td 　width="12%">-</td>
+<td 　width="12%">-</td>
+</tr>
 
 </tbody>
 </table>

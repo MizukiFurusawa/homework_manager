@@ -1,39 +1,71 @@
-<h1>TIMELINE</h1>
+
 <% if user_signed_in? %>
+<div class ="page_title">TIMELINE</div>
+<br>
+
+
+
+
+
+
+<% days = ["月","火","水","木","金","土","日"] %>
+
+
 <table class="sample_02">
 <tbody>
 
 <tr>
 <th>Option</th>
+<th>Subject</th>
 <th>Issues</th>
 <th>Processed</th>
-<th>Subject</th>
 <th>Professor</th>
 <th>Lecture Date</th>
 </tr>
 
-	<% @projects.each do |project| %>
-	<tr>
-	<td width="10%"><%= link_to "[delete] ",project_path(project.id),method: :delete,data: {confirm: "削除しますか？"} %></td>
-	<td width="10%">(<%= project.tasks.unfinished.count %>/<%= project.tasks.count %>)</td>
-	<td width="10%">127</td>
-	<td width="40%"><%= link_to "[edit]",edit_project_path(project.id) %>          <%= link_to project.title,project_path(project.id) %></td>
-	<td width="10%"><%= project.Professor_name %></td>
-	<td width="20%"><%= project.Days %>曜<%= project.Times %>限目</td>
-	</tr>
+<% for days_index in 0..6 do %>
+	<% for time_index in 1..7 do %>
+		
+		<tr>
+		<% @projects.each do |project| %>
+			<% if time_index.to_s == project.Times && days[days_index] == project.Days then %>
+
+				<td width="10%"><%= link_to "[delete]",project_path(project.id),method: :delete,data: {confirm: "削除しますか？"} %>
+	  	 	<%= link_to "[edit]",edit_project_path(project.id) %></td>
+				<td width="40%"><%= link_to project.title,project_path(project.id) %></td>
+				<td width="10%">(<%= project.tasks.unfinished.count %>/<%= project.tasks.count %>)</td>
+				<td width="10%">0</td>
+				<td width="10%"><%= project.Professor_name %></td>
+				<td width="20%"><%= project.Days %>曜<%= project.Times %>限目</td>
+
+			<% end %>
+		<% end %>
+		</tr>
+
+
 	<% end %>
+<% end %>
 
 
-	<tr>
-	<td width="10%"><%= link_to "[Add]" ,new_project_path %></td>
-	<td width="10%">-</td>
-	<td width="10%">-</td>
-	<td width="40%">-</td>
-	<td width="10%">-</td>
-	<td width="20%">-</td>
-	</tr>
-
+<tr>
+<td width="10%"><%= link_to "[Add]" ,new_project_path %></td>
+<td width="40%">-</td>
+<td width="10%">-</td>
+<td width="10%">-</td>
+<td width="10%">-</td>
+<td width="20%">-</td>
+</tr>
 
 </tbody>
 </table>
+
+
+<% else %>
+<div class ="page_title">Please login.</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<%= image_tag 'android_icon_256.png' %>
 <% end %>

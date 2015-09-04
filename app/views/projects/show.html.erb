@@ -1,6 +1,13 @@
-<h1><%= @project.title %></h1>
+
+<div class ="page_title"><%= @project.title %></div>
 
 
+<div class ="page_sub_title">
+<%= @project.Professor_name %>(<%= @project.Days %>曜<%= @project.Times %>限目)
+</div>
+
+
+<br>
 <table class="sample_02">
 <tbody>
 
@@ -32,8 +39,11 @@
 
 <br>
 <div class="form">
+<br>
 <%= form_for [@project,@project.tasks.build] do |f| %>
-<%= f.text_field :title %>
+<%= f.label :title, "homework title:" %><br>
+<%= f.text_field :title %><br>
+<br>
 <%= f.submit %>
 <% end %>
 </div>
