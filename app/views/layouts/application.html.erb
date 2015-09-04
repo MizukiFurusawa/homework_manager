@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Taskapp</title>
+  <title>HOMEWORK MANAGER</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -16,7 +16,7 @@
 
 		<ul id="menu" >
 
-  			<li><%= link_to 'TIMELINE',''%></li>
+  			<li><%= link_to 'TIMELINE', projects_path %></li>
   			<li><%= link_to 'TIMETABLE','' %></li>
   			<li><%= link_to 'SETTINGS','' %></li>
   			<li><%= link_to 'ABOUT',''%></li>
@@ -29,9 +29,8 @@
 
 <section>
 <%= yield %>
-<%= link_to 'HOME',projects_path %>
 </section>
 
-
+<%= image_tag 'android_icon_256.png' %>
 </body>
 </html>
