@@ -15,6 +15,11 @@
  */
 
 
+.form{
+	width : 280px;
+	margin-left: auto
+}
+
 .timetable_list{
 	width: 				100%;
 	border-collapse: 	collapse;

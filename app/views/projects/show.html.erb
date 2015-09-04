@@ -1,22 +1,48 @@
 <h1><%= @project.title %></h1>
 
-<ul>
+
+<table class="sample_02">
+<tbody>
+
+<tr>
+<th>Check</th>
+<th>Option</th>
+<th>Homework</th>
+<th>Due date</th>
+<th>Time left</th>
+</tr>
+
+
+
+
 <% @project.tasks.each do |task| %>
-<li>
-	<%= check_box_tag '','',task.done,{'data-id' => task.id,'data-project_id' => task.project_id} %>
-	<%= task.title %>
-	<%= link_to "[delete]",project_task_path(task.project_id,task.id),method: :delete,
-	data: {confirm: "削除しますか？"} %>
-</li>
+<tr>
+<td width="10%"><%= check_box_tag '','',task.done,{'data-id' => task.id,'data-project_id' => task.project_id} %></td>
+<td width="10%"><%= link_to "[delete]",project_task_path(task.project_id,task.id),method:
+ :delete,data: {confirm: "削除しますか？"} %></td>
+<td width="50%"><%= task.title %></td>
+<td width="10%"></td>
+<td width="20%"></td>
+</tr>
 <% end %>
 
-<li>
-	<%= form_for [@project,@project.tasks.build] do |f| %>
-	<%= f.text_field :title %>
-	<%= f.submit %>
-	<% end %>
-</li>
-</ul>
+</tbody>
+</table>
+
+
+<br>
+<div class="form">
+<%= form_for [@project,@project.tasks.build] do |f| %>
+<%= f.text_field :title %>
+<%= f.submit %>
+<% end %>
+</div>
+
+
+
+
+
+
 
 <script>
 $(function(){
@@ -25,3 +51,4 @@ $(function(){
 	});
 });
 </script>
+
