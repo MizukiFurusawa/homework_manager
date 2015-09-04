@@ -200,7 +200,7 @@ p#username{
 .sample_02 th
 {
 	padding: 6px;
-	text-align: left;
+	text-align: center;
 	vertical-align: top;
 	color: #fff;
 	background-color: #555;
@@ -214,9 +214,4 @@ p#username{
 	background-color: #fff;
 	border-bottom: 1px solid #999;
 	border-left: 1px solid #999;
-}
-
-
-table.sample_02 tr:hover {
-background-color: #FFCC99; /* マウスオーバー時の行の背景色 */
 }
