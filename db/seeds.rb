@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# coding: utf-8
+
+
+Project.create(:title => '100キロ歩行', :Professor_name => 'ほりた', :Lecture_date => '2015-09-05', :Days => '月', :Times => '1')
+Project.create(:title => '100キロ歩行', :Professor_name => 'ほりた', :Lecture_date => '2015-09-05', :Days => '火', :Times => '2')

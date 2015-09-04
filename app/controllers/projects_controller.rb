@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-
 	before_action :set_project,only:[:show,:edit,:update,:destroy]
 
 	def set_project
@@ -46,8 +45,12 @@ class ProjectsController < ApplicationController
 
 	private
 
+
+
 	def project_params
-		params[:project].permit(:title)
+
+		#cation!!
+		params[:project].permit(:title,:Professor_name,:Lecture_date,:Days,:Times)
 	end
 
 end

@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
+
+  devise_for :users
   resources :projects do 
     resources :tasks,only:[:create,:destroy]
   end
   root 'projects#index'
+  get 'timetables/index'
   post '/projects/:project_id/tasks/:id/toggle' => 'tasks#toggle'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,13 +1,45 @@
+
 <%= form_for @project do |f| %>
-<p>
-	<%= f.label :title %><br>
-	<%= f.text_field :title %>
+
+  <div class="field">
+    <%= f.label :title, "subject" %><br>
+    <%= f.text_field :title %>
 	<% if @project.errors.any? %>
 		<%= @project.errors.messages[:title][0] %>
 	<% end %>
-</p>
+  </div>
 
-<p>
-	<%= f.submit %>
-</p>
+  <div class="field">
+    <%= f.label :Professor_name, "Professor" %><br>
+    <%= f.text_field :Professor_name %>
+	<% if @project.errors.any? %>
+		<%= @project.errors.messages[:Professor_name][0] %>
+	<% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Lecture_date, "Lecture_date" %><br>
+    <%= f.text_field :Lecture_date %>
+	<% if @project.errors.any? %>
+		<%= @project.errors.messages[:Lecture_date][0] %>
+	<% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Days, "Day" %><br><%= f.text_field :Days %>
+	<% if @project.errors.any? %>
+		<%= @project.errors.messages[:Days][0] %>
+	<% end %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :Times, "Time" %><br><%= f.text_field :Times %>
+	<% if @project.errors.any? %>
+		<%= @project.errors.messages[:Times][0] %>
+	<% end %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "登録する" %>
+  </div>
 <% end %>

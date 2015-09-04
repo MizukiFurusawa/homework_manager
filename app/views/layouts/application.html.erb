@@ -10,19 +10,46 @@
 
 
 <body>
+
+
+<div id="container">
+  <div id="user_nav">
+    <% if user_signed_in? %>
+     Logged in as <strong><%= current_user.email %></strong>.
+    <% else %>
+   <% end %>
+ </div>
+
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, id: "flash_#{name}" %>
+  <% end %>
+</div>
+
+
     <header>
 		<div class="homepage_title">HOMEWORK MANAGER</div>
 		<br>
 
-		<ul id="menu" >
 
+    <% if user_signed_in? %>
+		<ul id="menu" >
+  			<li><%= link_to 'TIMELINE', projects_path %></li>
+  			<li><%= link_to 'TIMETABLE',"timetables/index" %></li>
+  			<li><%= link_to 'EDIT PROFILE',edit_user_registration_path %></li>
+  			<li><%= link_to 'ABOUT',''%></li>
+  			<li><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete %></li>
+		</ul>
+    <% else %>
+
+		<ul id="menu" >
   			<li><%= link_to 'TIMELINE', projects_path %></li>
   			<li><%= link_to 'TIMETABLE','' %></li>
-  			<li><%= link_to 'SETTINGS','' %></li>
+  			<li><%= link_to 'SIGN UP',new_user_registration_path %></li>
   			<li><%= link_to 'ABOUT',''%></li>
-  			<li><%= link_to 'LOGOUT', '' %></li>
-
+  			<li><%= link_to 'LOGIN', new_user_session_path %></li>
 		</ul>
+   <% end %>
+
     </header>
 
 
