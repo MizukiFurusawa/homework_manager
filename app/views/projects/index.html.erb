@@ -33,8 +33,22 @@
 				<td width="10%"><%= link_to "[delete]",project_path(project.id),method: :delete,data: {confirm: "削除しますか？"} %>
 	  	 	<%= link_to "[edit]",edit_project_path(project.id) %></td>
 				<td width="40%"><%= link_to project.title,project_path(project.id) %></td>
-				<td width="10%">(<%= project.tasks.unfinished.count %>/<%= project.tasks.count %>)</td>
-				<td width="10%">0</td>
+				<td width="10%">(<%= project.tasks.count - project.tasks.unfinished.count %>/<%= project.tasks.count %>)</td>
+
+
+
+				<td width="10%">
+
+				<% if project.tasks.count != 0 then %>
+				<%= 100 * (project.tasks.count - project.tasks.unfinished.count) / project.tasks.count %>
+				<% else %>
+				<%= 0 %>
+				<% end %>
+
+				%</td>
+
+
+
 				<td width="10%"><%= project.Professor_name %></td>
 				<td width="20%"><%= project.Days %>曜<%= project.Times %>限目</td>
 
