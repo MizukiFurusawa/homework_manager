@@ -9,5 +9,11 @@
 # coding: utf-8
 
 
-Project.create(:title => '100キロ歩行', :Professor_name => 'ほりた', :Lecture_date => '2015-09-05', :Days => '月', :Times => '1')
-Project.create(:title => '100キロ歩行', :Professor_name => 'ほりた', :Lecture_date => '2015-09-05', :Days => '火', :Times => '2')
+
+
+Project.create(:title => "講義１",:Professor_name => "教授１",:Days => "月",:Times => "1",:Email => "")
+Project.create(:title => "講義２",:Professor_name => "教授２",:Days => "火",:Times => "2",:Email => "")
+Project.create(:title => "講義３",:Professor_name => "教授３",:Days => "水",:Times => "3",:Email => "")
+Project.create(:title => "講義４",:Professor_name => "教授４",:Days => "木",:Times => "4",:Email => "")
+Project.create(:title => "講義５",:Professor_name => "教授５",:Days => "金",:Times => "5",:Email => "")
+

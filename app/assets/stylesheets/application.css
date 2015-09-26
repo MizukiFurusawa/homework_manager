@@ -16,16 +16,13 @@
 
 
 .form{
-	width : 300px;
-	margin-right: auto
+	width:	auto;
+	height:	auto;
 }
-
 .timetable_list{
-	width: 				100%;
-	border-collapse: 	collapse;
+	width: 100%;
+	border-collapse: collapse;
 }
-
-
 .timetable_list th{
 	width: 14%;
 	padding: 6px;
@@ -35,170 +32,87 @@
 	background:	#FFFFFF;
 	border: 2px solid #CCCCCC;
 }
-
 .timetable_list td{
-    text-align: 	center; 
-	color: 			#FFFFFF;
-	height: 		100px;
-	padding: 		6px;
-	background:		steelblue;
-	border: 		2px solid #CCCCCC;
+    text-align: center; 
+	color: #FFFFFF;
+	height: 100px;
+	padding: 6px;
+	background: steelblue;
+	border: 2px solid #CCCCCC;
 }
-
 .timeline_list{
-	width: 				100%;
-	border-collapse: 	collapse;
+	width: 100%;
+	border-collapse: collapse;
 }
 .timeline_list th{
-	width: 			33%;
-	height: 		20px;
-	padding: 		6px;
-    text-align: 	center;
+	width: 33%;
+	height: 20px;
+	padding: 6px;
+    text-align: center;
 	vertical-align: top;
-	color: 			steelblue;
-	background:		#FFFFFF;
-	border: 		2px solid #CCCCCC;
+	color: steelblue;
+	background:	#FFFFFF;
+	border: 2px solid #CCCCCC;
 }
 .timeline_list td{
-    text-align: 	center; 
-	color: 			#FFFFFF;
-	height: 		20px;
-	padding: 		6px;
-	background:		steelblue;
-	border: 		2px solid #CCCCCC;
+   text-align: center; 
+	color: #FFFFFF;
+	height: 20px;
+	padding: 6px;
+	background:	steelblue;
+	border: 2px solid #CCCCCC;
 }
-
 section{
-	height		:	auto;
-  	margin 		:	50px 100px;
-  	text-align : center;
-
-
+	font-family: "meiryo";
+	height:	auto;
+  	margin:	50px 75px;
 }
-
-
 body{
-	font-family	:	segoe ui;
-	background	:	steelblue;
+	background:	#EB8F32;
 }
-
-
 p#username{
-    text-align	: 	right;  
-	color		:	white;
-	font-size	: 	15px;
-	text-shadow	:	1px 1px 2px black;
+	text-align:right; 
+	color:white;
+	font-size:15px;
+	text-shadow:1px 1px 2px black;
 }
-
-
 .notice{
-	font-weight:	bold;
-    text-align	: 	left;
-	color		:	white;
-	font-size	: 	15px;
+	font-weight: bold;
+    text-align: left;
+	color: white;
+	font-size: 15px;
 }
-
-
 .alert{
-	font-weight:	bold;
-    text-align	: 	left;
-	color		:	white;
-	font-size	: 	15px;	
+	font-weight: bold;
+    text-align: left;
+	color: white;
+	font-size: 15px;	
 }
-
-
-.homepage_title{
-    text-align	: 	center;
-	color		:	white;
-	font-size	: 	50px;
-	text-shadow	:	1px 1px 2px black;
-}
-
-
 .page_title{
-    text-align	: 	center;
-	color		:	white;
-	font-size	: 	30px;
-	text-shadow	:	1px 1px 2px black;
+	font-family: "Segoe WP Black";
+	color: #FFF;
+	font-size: 50px;
 }
-
-
 .page_sub_title{
-    text-align	: 	center;
-	color		:	white;
-	font-size	: 	20px;
-	text-shadow	:	1px 1px 2px black;
+	color: #FFFFFF;
+	font-size: 20px;
 }
-
-
+.form_text{
+	color: #FFFFFF;
+	font-size: 15px;
+}
 .page_text{
-    text-align	: 	left;
-	color		:	white;
-	font-size	: 	15px;
-	text-shadow	:	1px 1px 1px black;
+    text-align: left;
+	color:	white;
+	font-size: 15px;
+	text-shadow: 1px 1px 1px black;
 }
-
-
-
-
-
-#menu {
-  	margin 		:	0 100px;
-  height			: 45px;
-  padding			: 0 20px;
-  list-style-type	: none;
-  background		: -webkit-gradient(linear, left top, left bottom, color-stop(1.00, #ff7400), color-stop(0.00, #ffa443));
-  background		: -webkit-linear-gradient(#ffa443, #ff7400);
-  background		: -moz-linear-gradient(#ffa443, #ff7400);
-  background		: -o-linear-gradient(#ffa443, #ff7400);
-  background		: -ms-linear-gradient(#ffa443, #ff7400);
-  background		: linear-gradient(#ffa443, #ff7400);
-  border-radius		: 10px;
-  box-shadow		: 0px 0px 2px #000;
-}
-
-
-
-#menu li {
-  width			: 20%;
-  float			: left;
-  padding		: 0;
-  margin 		: 0;
-  text-align	: center;
-}
-
-
-
-#menu li a {
-  width				: auto;
-  color 			: #fff;
-  font-size			: 12px;
-  font-weight		: bold;
-  margin 			: 8px;
-  padding			: 5px 0 4px 0;
-  text-decoration	: none;
-  text-shadow		: 0px -1px 1px rgba(0,0,0,0.7);
-  display			: block;
-  border-radius		: 10px;
-}
-
-
-
-#menu li a:hover
-{
-  background : rgba(0,0,0,0.3);
-  box-shadow : 1px 1px 3px rgba(255,255,255,0.5), 1px 1px 3px rgba(0,0,0,0.5) inset;
-}
-
-.sample_02
-{
+.sample_02{
 	width: 100%;
 	border-collapse: collapse;
 	border-right: 1px solid #999;
 }
-
-.sample_02 th
-{
+.sample_02 th{
 	padding: 6px;
 	text-align: center;
 	vertical-align: top;
@@ -207,9 +121,7 @@ p#username{
 	border-left: 5px solid #ff6633; 
 	border-top: 1px solid #fff;
 } 	 
-
-.sample_02 td
-{
+.sample_02 td{
 	padding: 6px;
 	background-color: #fff;
 	border-bottom: 1px solid #999;

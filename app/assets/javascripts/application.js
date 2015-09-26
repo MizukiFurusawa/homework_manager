@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+    $('.progress .progress-bar').progressbar({display_text: 'fill'});
+}

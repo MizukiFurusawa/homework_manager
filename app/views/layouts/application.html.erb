@@ -1,62 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>HOMEWORK MANAGER</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-
-<body>
-
-
-<div id="container">
-  <div id="user_nav">
-    <% if user_signed_in? %>
-     Logged in as <strong><%= current_user.email %></strong>.
-    <% else %>
-   <% end %>
- </div>
-
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, id: "flash_#{name}" %>
-  <% end %>
-</div>
-
-
-    <header>
-		<div class="homepage_title">HOMEWORK MANAGER</div>
-		<br>
-
-
-    <% if user_signed_in? %>
-		<ul id="menu" >
-  			<li><%= link_to 'TIMELINE', projects_path %></li>
-  			<li><%= link_to 'TIMETABLE',"/timetables/index" %></li>
-  			<li><%= link_to 'EDIT PROFILE',edit_user_registration_path %></li>
-  			<li><%= link_to 'ABOUT',''%></li>
-  			<li><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete %></li>
-		</ul>
-    <% else %>
-
-		<ul id="menu" >
-  			<li><%= link_to 'TIMELINE', projects_path %></li>
-  			<li><%= link_to 'TIMETABLE','' %></li>
-  			<li><%= link_to 'SIGN UP',new_user_registration_path %></li>
-  			<li><%= link_to 'ABOUT',''%></li>
-  			<li><%= link_to 'LOGIN', new_user_session_path %></li>
-		</ul>
-   <% end %>
-
-    </header>
-
-
-
-<section>
-<%= yield %>
-</section>
-
-</body>
+  <head>
+    <title>HOMEWORK MANAGER</title>
+    <%= javascript_include_tag "application" %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= include_gon %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-static-top navbar-fixed-top">
+      <div class="container">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/projects">HOMEWORK MANAGER</a>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+            <ul class="navbar-nav nav">
+              <% if user_signed_in? %>
+                <li class= "<%= 'active' if controller.controller_name == 'projects' %>"><%= link_to 'TIMELINE', projects_path %></li>
+                <li class= "<%= 'active' if controller.controller_name == 'timetables' %>"><%= link_to 'TIMETABLE',"/timetables/index" %></li>
+                <li class= "<%= 'active' if request.path_info == '/users/edit' %>"><%= link_to 'PROFILE', edit_user_registration_path %></li>
+                <li><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to 'TIMELINE', projects_path %></li>
+                <li><%= link_to 'TIMETABLE','' %></li>
+                <li><%= link_to 'SIGN UP',new_user_registration_path %></li>
+                <li><%= link_to 'LOGIN', new_user_session_path %></li>
+              <% end %>
+            </ul>
+            <ul class="navbar-nav nav navbar-right">
+              <% if user_signed_in? %>
+                <li><a href="">Logged in as <%= current_user.email %>.</a></li>
+              <% else %>
+                <li><a href="">
+                  <% flash.each do |name, msg| %>
+                    <%= content_tag :div, msg, id: "flash_#{name}" %>
+                  <% end %>
+                <% end %>
+              </a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section>
+      <br>
+      <br>
+      <%= yield %>
+    </section>
+  </body>
 </html>

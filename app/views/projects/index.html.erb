@@ -1,85 +1,76 @@
-
 <% if user_signed_in? %>
-<div class ="page_title">TIMELINE</div>
-<br>
-
-
-
-
-
-
-<% days = ["月","火","水","木","金","土","日"] %>
-
-
-<table class="sample_02">
-<tbody>
-
-<tr>
-<th>Option</th>
-<th>Subject</th>
-<th>Issues</th>
-<th>Processed</th>
-<th>Professor</th>
-<th>Lecture Date</th>
-</tr>
-
-<% for days_index in 0..6 do %>
-	<% for time_index in 1..7 do %>
-		
-		<tr>
-		<% @projects.each do |project| %>
-			<% if time_index.to_s == project.Times && days[days_index] == project.Days then %>
-
-				<td width="10%"><%= link_to "[delete]",project_path(project.id),method: :delete,data: {confirm: "削除しますか？"} %>
-	  	 	<%= link_to "[edit]",edit_project_path(project.id) %></td>
-				<td width="40%"><%= link_to project.title,project_path(project.id) %></td>
-				<td width="10%">(<%= project.tasks.count - project.tasks.unfinished.count %>/<%= project.tasks.count %>)</td>
-
-
-
-				<td width="10%">
-
-				<% if project.tasks.count != 0 then %>
-				<%= 100 * (project.tasks.count - project.tasks.unfinished.count) / project.tasks.count %>
-				<% else %>
-				<%= 0 %>
+	<div class ="page_title">TIMELIST</div>
+	<br>
+	<% days = ["月","火","水","木","金","土","日"] %>
+	<table class="table table-condensed table-bordered">
+  	<thead>
+    	<tr class="active">
+				<th>Option</th>
+				<th>Subject</th>
+				<th>Issues</th>
+				<th>Processed</th>
+				<th>Professor</th>
+				<th>Lecture Date</th>
+    	</tr>
+  	</thead>
+  	<tbody>
+			<tr class="active">
+				<td width="15%">
+					<ul class="nav nav-pills">
+						<li><%= link_to "add" ,new_project_path %><span class="badge"></span></li>
+					</ul>
+				</td>
+				<td width="40%"></td>
+				<td width="10%"></td>
+				<td width="10%"></td>
+				<td width="10%"></td>
+				<td width="15%"></td>
+			</tr>
+			<% for days_index in 0..6 do %>
+				<% for time_index in 1..7 do %>
+						<% @projects.each do |project| %>
+							<% if time_index.to_s == project.Times && days[days_index] == project.Days then %>
+								<% if project.tasks.count !=0 then %>
+									<tr class="info">
+								<% else %>
+									<tr class="active">
+								<% end %>
+								<td width="15%">
+									<ul class="nav nav-pills">
+  									<li><%= link_to "delete",project_path(project.id),method: :delete %><span class="badge"></span></a></li>
+  									<li><%= link_to "edit",edit_project_path(project.id) %><span class="badge"></span></li>
+	  	 						</ul>
+	  	 					</td>
+								<td width="40%">
+									<ul class="nav nav-pills">
+										<li><%= link_to project.title,project_path(project.id) %><span class="badge"></span></li>
+									</ul>
+								</td>
+								<td width="10%">
+									(<%= project.tasks.count - project.tasks.unfinished.count %>/<%= project.tasks.count %>)
+								</td>
+								<td width="10%">
+									<% if project.tasks.count != 0 then %>
+										<%= 100 * (project.tasks.count - project.tasks.unfinished.count) / project.tasks.count %>
+									<% else %>
+										<%= 0 %>
+									<% end %>%
+								</td>
+								<td width="10%">
+									<%= project.Professor_name %>
+								</td>
+								<td width="15%">
+									<% if project.Times2 != "なし" && project.Days2 != "なし" then %>
+										<%= project.Days %>曜<%= project.Times %>限目,<%= project.Days2 %>曜<%= project.Times2 %>限目
+									<% else %>
+										<%= project.Days %>曜<%= project.Times %>限目
+									<% end %>
+								</td>
+							<% end %>
+						<% end %>
+					</tr>
 				<% end %>
-
-				%</td>
-
-
-
-				<td width="10%"><%= project.Professor_name %></td>
-				<td width="20%"><%= project.Days %>曜<%= project.Times %>限目</td>
-
 			<% end %>
-		<% end %>
-		</tr>
-
-
-	<% end %>
-<% end %>
-
-
-<tr>
-<td width="10%"><%= link_to "[Add]" ,new_project_path %></td>
-<td width="40%">-</td>
-<td width="10%">-</td>
-<td width="10%">-</td>
-<td width="10%">-</td>
-<td width="20%">-</td>
-</tr>
-
-</tbody>
-</table>
-
-
-<% else %>
-<div class ="page_title">Please login.</div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<%= image_tag 'android_icon_256.png' %>
+  	</tbody>
+	</table> 
 <% end %>

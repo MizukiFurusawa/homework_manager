@@ -1,63 +1,76 @@
 
-<div class ="page_title"><%= @project.title %></div>
-
-
-<div class ="page_sub_title">
-<%= @project.Professor_name %>(<%= @project.Days %>曜<%= @project.Times %>限目)
+<div class ="page_title">
+	<%= @project.title %>
 </div>
-
-
+<div class ="page_sub_title">
+	<%= @project.Professor_name %>
+	<% if @project.Times2 != "なし" && @project.Days2 != "なし" then %>
+		(<%= @project.Days %>曜<%= @project.Times %>限目,<%= @project.Days2 %>曜<%= @project.Times2 %>限目)
+	<% else %>
+		(<%= @project.Days %>曜<%= @project.Times %>限目)
+	<% end %>
+</div>
+<div class="progress">
+  <div class="progress-bar progress-bar-striped active progress-bar-waring" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+  </div>
+</div>
 <br>
-<table class="sample_02">
+<br>
+<table class="table table-striped table-bordered" style="background: #FFF;">
+<thead>
+	<tr>
+	<th>Check</th>
+	<th>Option</th>
+	<th>Homework</th>
+	</tr>
+</thead>
 <tbody>
-
-<tr>
-<th>Check</th>
-<th>Option</th>
-<th>Homework</th>
-<th>Due date</th>
-<th>Time left</th>
-</tr>
-
-
-
-
-<% @project.tasks.each do |task| %>
-<tr>
-<td width="10%"><%= check_box_tag '','',task.done,{'data-id' => task.id,'data-project_id' => task.project_id} %></td>
-<td width="10%"><%= link_to "[delete]",project_task_path(task.project_id,task.id),method:
- :delete,data: {confirm: "削除しますか？"} %></td>
-<td width="50%"><%= task.title %></td>
-<td width="10%"></td>
-<td width="20%"></td>
-</tr>
-<% end %>
-
-</tbody>
-</table>
-
-
+	<% @project.tasks.each do |task| %>
+		<tr>
+			<td width="10%">
+				<%= check_box_tag '','',task.done,{'data-id' => task.id,'data-project_id' => task.project_id} %>
+			</td>
+			<td width="10%">
+				<ul class="nav nav-pills">
+					<li><%= link_to "delete",project_task_path(task.project_id,task.id),method: :delete %><span class="badge"></span></a></li>
+				</ul>
+			</td>
+			<td width="80%">
+				<ul class="nav nav-pills">
+					<li><%= link_to task.title,"" %><span class="badge"></span></a></li>
+				</ul>
+			</td>
+		</tr>
+	<% end %>
+</table> 
+<br>
 <br>
 <div class="form">
-<br>
-<%= form_for [@project,@project.tasks.build] do |f| %>
-<%= f.label :title, "homework title:" %><br>
-<%= f.text_field :title %><br>
-<br>
-<%= f.submit %>
-<% end %>
+	<%= form_for [@project,@project.tasks.build] do |f| %>
+	<%= f.text_field :title %>
+	<br>
+	<br>
+	<%= submit_tag "課題を追加" %>
+	<% end %>
 </div>
-
-
-
-
-
-
-
+<%= javascript_tag do %>
+  window.tasks_count = <%= raw @project.tasks.count %>;
+  window.tasks_unfinished_count = <%= raw @project.tasks.unfinished.count %>;
+<% end %>
 <script>
 $(function(){
+	var n = 0;
+	var str = "";
+	if( window.tasks_count != 0){
+		n = 100 * (window.tasks_count - window.tasks_unfinished_count) / window.tasks_count;
+	}
+	str += n;
+	str += "%";
+	$('.progress-bar').css('width', str);
 	$("input[type=checkbox]").click(function(){
 		$.post('/projects/'+ $(this).data('project_id') +'/tasks/'+ $(this).data('id') +'/toggle');
+		location.reload();
+		$('.progress-bar').css('width', "0%");
 	});
 });
 </script>

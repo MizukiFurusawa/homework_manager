@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
 
-
 	def create
 		@project = Project.find(params[:project_id])
 		@task = @project.tasks.create(task_params)
@@ -18,7 +17,9 @@ class TasksController < ApplicationController
 		@task = Task.find(params[:id])
 		@task.done = !@task.done
 		@task.save
+		@project = Project.find(params[:project_id])
 	end
+
 
 	private
 

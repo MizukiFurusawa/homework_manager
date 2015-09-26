@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def index
-		@projects = Project.all
+		@projects = Project.where(Email: current_user.email)
 	end
 
 	def show
@@ -26,6 +26,7 @@ class ProjectsController < ApplicationController
 	
 	def create
 		@project = Project.new(project_params)
+		@project.Email = current_user.email
 		if @project.save
 			redirect_to projects_path
 		else
@@ -39,7 +40,6 @@ class ProjectsController < ApplicationController
 		else
 			render 'edit'
 		end
-
 	end
 
 
@@ -50,7 +50,7 @@ class ProjectsController < ApplicationController
 	def project_params
 
 		#cation!!
-		params[:project].permit(:title,:Professor_name,:Days,:Times)
+		params[:project].permit(:title,:Professor_name,:Days,:Times,:Email,:Days2,:Times2)
 	end
 
 end

@@ -1,5 +1,13 @@
-
-<div class ="page_title">Information</div>
- <br>
- <br>
+<div class ="page_title">
+	<%= @project.title %>
+</div>
+<div class ="page_sub_title">
+	<%= @project.Professor_name %>
+	<% if @project.Times2 != "なし" && @project.Days2 != "なし" then %>
+		(<%= @project.Days %>曜<%= @project.Times %>限目,<%= @project.Days2 %>曜<%= @project.Times2 %>限目)
+	<% else %>
+		(<%= @project.Days %>曜<%= @project.Times %>限目)
+	<% end %>
+</div>
+<br>
 <%= render 'form' %>

@@ -1,59 +1,55 @@
 
 <% if user_signed_in? %>
-<div class ="page_title">TIMETABLE</div>
-<br>
-<% days = ["月","火","水","木","金","土","日"] %>
-
-
-<table class="sample_02">
-<tbody>
-
-<tr>
-<th></th>
-<th>月</th>
-<th>火</th>
-<th>水</th>
-<th>木</th>
-<th>金</th>
-<th>土</th>
-<th>日</th>
-</tr>
-
-
-<% for time_index in 1..7 do %>
-	<tr>
-	<td 　width="16%"><%= time_index %>限</td>
-	
-	<% for days_index in 0..6 do %>
-		<td 　width="12%">
-
-
-			<% @projects.each do |project| %>
-
-				<% if time_index.to_s == project.Times && days[days_index] == project.Days then %>
-				<%= link_to project.title,project_path(project.id) %>
+	<div class ="page_title">TIMETABLE</div>
+	<br>
+	<% days = ["月","火","水","木","金","土","日"] %>
+	<table class="table table-bordered table-condensed" >
+  	<thead>
+		<tr class="active">
+		<th></th>
+		<th>月</th>
+		<th>火</th>
+		<th>水</th>
+		<th>木</th>
+		<th>金</th>
+		<th>土</th>
+		<th>日</th>
+		</tr>
+  	</thead>
+  	<tbody>
+  		<% for time_index in 1..7 do %>
+				<tr class="active">
+				<td 　width="9%"><%= time_index %>限</td>
+				<% for days_index in 0..6 do %>
+					<td 　width="13%">
+						<% @projects.each do |project| %>
+							<% if time_index.to_s == project.Times && days[days_index] == project.Days then %>
+								<ul class="nav nav-pills">
+									<li><%= link_to project.title,project_path(project.id) %><span class="badge"></span></a></li>
+								</ul>
+							<% end %>
+							<% if time_index.to_s == project.Times2 && days[days_index] == project.Days2 then %>
+								<ul class="nav nav-pills">
+									<li><%= link_to project.title,project_path(project.id) %><span class="badge"></span></a></li>
+								</ul>
+							<% end %>
+						<% end %>
+					</td>
 				<% end %>
-
+				</tr>
 			<% end %>
-
-		</td>
-	<% end %>
-
-	</tr>
-<% end %>
-
-
-<tr>
-<td 　width="16%"><%= link_to "[Add]" ,new_project_path %></td>
-<td 　width="12%">-</td>
-<td 　width="12%">-</td>
-<td 　width="12%">-</td>
-<td 　width="12%">-</td>
-<td 　width="12%">-</td>
-<td 　width="12%">-</td>
-<td 　width="12%">-</td>
-</tr>
-
-</tbody>
-</table>
+			<tr class="active">
+			<td 　width="9%">
+				<%= link_to "add" ,new_project_path %>
+			</td>
+			<td 　width="13%"></td>
+			<td 　width="13%"></td>
+			<td 　width="13%"></td>
+			<td 　width="13%"></td>
+			<td 　width="13%"></td>
+			<td 　width="13%"></td>
+			<td 　width="13%"></td>
+			</tr>
+  	</tbody>
+	</table> 
 <% end %>

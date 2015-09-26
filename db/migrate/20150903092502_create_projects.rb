@@ -6,6 +6,7 @@ class CreateProjects < ActiveRecord::Migration
       t.date :Lecture_date
       t.string :Days
       t.string :Times
+      t.string :Email
       t.timestamps null: false
     end
   end

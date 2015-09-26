@@ -8,6 +8,10 @@ Bundler.require(*Rails.groups)
 
 module Taskapp
   class Application < Rails::Application
+
+    # フォント追加
+    config.assets.paths << "#{Rails}/vender/assets/fonts"
+    
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
